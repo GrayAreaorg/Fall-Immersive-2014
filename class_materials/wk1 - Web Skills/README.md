@@ -2,7 +2,9 @@
 
 ##Tuesday October 7th:
 
+
 **[Slides](http://colt.github.io/web_skills_slides/#/welcome)**
+
 
 * What is the internet and how does it work?
 * Web standards and browsers
@@ -15,6 +17,7 @@
   - using the static site generator
   - syncing code with the native app for [Mac](http://mac.github.com) and [Windows](http://windows.github.com)
 * Setting up a Code Editor
+
 
 
 ## Further Reading
