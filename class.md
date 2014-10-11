@@ -38,5 +38,5 @@ Find her work on GitHub Repo: [redfirefly] (https://redfirefly.github.io/)
 > ![](img/nh.jpg)
 ###[Noura Howell](http://nourahowell.com)
 Noura Howell is originall from Melbourne Village, FL. She is PhD student at the School of Information at UC Berkeley, studying how prototyping software/hardware artifacts can help people express their ideas.
->
+
 <br>
