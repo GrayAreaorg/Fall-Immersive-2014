@@ -30,3 +30,9 @@ different art forms, including blown glass and [encaustic paintings](http://yout
 She hopes that her involvement in the Creative Coding Immersive will help her to bridge the physical with the digital through interactive installations.
 Find her work on GitHub Repo: [redfirefly] (https://redfirefly.github.io/)
 <br>
+
+
+> ![](img/nh.jpg)
+###[Noura Howell](http://nourahowell.com)
+
+Noura Howell is originall from Melbourne Village, FL. She is PhD student at the School of Information at UC Berkeley, studying how prototyping software/hardware artifacts can help people express their ideas.
