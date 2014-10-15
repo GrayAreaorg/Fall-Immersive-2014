@@ -13,6 +13,12 @@ Flexitarian photo booth Marfa eiusmod, Shoreditch adipisicing whatever.
 My GitHub Repo is: [repo name] (repo URL)
 <br>
 
+> ![](img/tyler_thumbnail.png)
+###[Tyler Prete](http://tylerprete.github.io) - [@tprete](https://twitter.com/tprete)
+Tyler cares about code almost as much as bourbon, and has often combined them to spectacular effect.
+His ultimate goal is to create robots that host dance parties for robots... why should people have all the fun?
+[Github Repo](https://github.com/tylerprete)
+
 
 <br>
 ## Teachers
