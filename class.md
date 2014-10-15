@@ -16,7 +16,7 @@ My GitHub Repo is: [repo name] (repo URL)
 > ![](img/tyler_thumbnail.png)
 ###[Tyler Prete](http://tylerprete.github.io) - [@tprete](https://twitter.com/tprete)
 Tyler cares about code almost as much as bourbon, and has often combined them to spectacular effect.
-His ultimate goal is to create robots that host dance parties for robots... why should people have all the fun?
+His ultimate goal is to create robots that host dance parties for robots... why should people have all the fun?<br/>
 [Github Repo](https://github.com/tylerprete)
 
 
