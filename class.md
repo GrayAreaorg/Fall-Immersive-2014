@@ -20,6 +20,13 @@ His ultimate goal is to create robots that host dance parties for robots... why 
 [Github Repo](https://github.com/tylerprete)
 
 
+> ![](img/wesito.png)
+###[Wesley Haines](http://whaines.github.io) - [@tprete](https://twitter.com/awhaines)
+Yo soy wesito.<br/>
+[Github Repo](https://github.com/wes-s-site)
+
+
+
 <br>
 ## Teachers
 > ![](img/cs.jpg)
