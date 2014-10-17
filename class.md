@@ -4,12 +4,12 @@
 
 ## Students
 
-> ![](img/image.jpg)
-###[Name](http://yourURL.com) - [@twitter handle](https://twitter.com/twitterhandle)
+> ![](img/rakhi.jpg)
+###[Name](http://www.rakhiparekh.me) - [@stylemindsoul](https://twitter.com/stylemindsoul)
 short paragraph here - tell us about you. 2 - 4 lines.
-Slow-carb paleo craft beer deserunt, pop-up organic mumblecore tofu kale chips. Paleo accusamus 90's typewriter American Apparel. Irure wolf 3 wolf moon forage meh. Forage chambray kogi pour-over.
-Whatever kitsch exercitation qui, crucifix tote bag cray plaid roof party Etsy fixie lo-fi jean shorts.
-Flexitarian photo booth Marfa eiusmod, Shoreditch adipisicing whatever.
+Spiritualist channeling tech poetry. "I love Glutten, sour beer and artsian coffee" No thats not Hipster Ipsum!
+Want to create Biomimicry with code.
+
 My GitHub Repo is: [repo name] (repo URL)
 <br>
 
