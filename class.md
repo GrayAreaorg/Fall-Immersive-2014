@@ -24,6 +24,14 @@ His ultimate goal is to create robots that host dance parties for robots... why 
 > ![](img/sd.jpg)
 ###[Steve Dudek](http://https://github.com/stevedudek) 
 Steve is a life-long chemist taking a year diversion from DNA sequencing to build and install art. He makes LED wearables that have vague animal shapes (like the one shown) that he programs with microcontrollers. When not making hats, Steve runs long distances, travels to far away places, and write a video game about a prudent penguin. Find the small beginning of his code work on github: [stevedudek] (https://github.com/stevedudek)
+
+<br>
+
+> ![](img/wesito.png)
+###[Wesley Haines](http://whaines.github.io) - [@awhaines](https://twitter.com/awhaines)
+Yo soy wesito.<br/>
+[Github Repo](https://github.com/wes-s-site)
+
 <br>
 
 ## Teachers
