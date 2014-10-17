@@ -26,7 +26,7 @@ instruction distributed over three sessions, **Tuesdays & Thursdays (6pm – 9pm
 | 3 | 10/21,23,25 | Javascript | Neal Riley |
 | 4 | 10/28,30,11/1 | Node.js | Neal Riley |
 | 5 | 11/4,6,8 | Microcontrollers | Mark Hellar |
-| 6 | 11/18,20,22 | Interactive Audio | Ben McChesney |
+| 6 | 11/11,13,15 | Interactive Audio | Cullen Miller |
 | 7 | 11/18,20,11/22 | Data Visualization |  |
 | - | ----------- | Break for Thanksgiving | ----------- |
 | 8 | 12/5,7,9 | Projection Mapping | Gabriel Dunne |
