@@ -19,8 +19,13 @@ Tyler cares about code almost as much as bourbon, and has often combined them to
 His ultimate goal is to create robots that host dance parties for robots... why should people have all the fun?<br/>
 [Github Repo](https://github.com/tylerprete)
 
-
 <br>
+
+> ![](img/sd.jpg)
+###[Steve Dudek](http://https://github.com/stevedudek) 
+Steve is a life-long chemist taking a year diversion from DNA sequencing to build and install art. He makes LED wearables that have vague animal shapes (like the one shown) that he programs with microcontrollers. When not making hats, Steve runs long distances, travels to far away places, and write a video game about a prudent penguin. Find the small beginning of his code work on github: [stevedudek] (https://github.com/stevedudek)
+<br>
+
 ## Teachers
 > ![](img/cs.jpg)
 ###[Colt Steele](http://iamcolt.com/) - [@CoolColtSteele](https://twitter.com/CoolColtSteele)
