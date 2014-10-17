@@ -6,7 +6,7 @@
 
 > ![](img/rakhi.jpg)
 ###[Name](http://www.rakhiparekh.me) - [@stylemindsoul](https://twitter.com/stylemindsoul)
-Spiritualist channeling tech poetry. "I love Glutten, Sour beer and Artsian coffee" No thats not Hipster Ipsum!
+Interaction Designer cum Spiritualist channeling tech poetry. "I love Glutten, Sour beer and Artsian coffee"            No thats not Hipster Ipsum!
 Want to create Biomimicry with code.
 
 My GitHub Repo is: [repo name] (repo URL)
