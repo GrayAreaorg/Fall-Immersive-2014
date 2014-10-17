@@ -4,15 +4,6 @@
 
 ## Students
 
-> ![](img/image.jpg)
-###[Name](http://yourURL.com) - [@twitter handle](https://twitter.com/twitterhandle)
-short paragraph here - tell us about you. 2 - 4 lines.
-Slow-carb paleo craft beer deserunt, pop-up organic mumblecore tofu kale chips. Paleo accusamus 90's typewriter American Apparel. Irure wolf 3 wolf moon forage meh. Forage chambray kogi pour-over.
-Whatever kitsch exercitation qui, crucifix tote bag cray plaid roof party Etsy fixie lo-fi jean shorts.
-Flexitarian photo booth Marfa eiusmod, Shoreditch adipisicing whatever.
-My GitHub Repo is: [repo name] (repo URL)
-<br>
-
 > ![](img/tyler_thumbnail.png)
 ###[Tyler Prete](http://tylerprete.github.io) - [@tprete](https://twitter.com/tprete)
 Tyler cares about code almost as much as bourbon, and has often combined them to spectacular effect.
