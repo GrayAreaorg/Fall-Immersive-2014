@@ -21,6 +21,14 @@ His ultimate goal is to create robots that host dance parties for robots... why 
 
 
 <br>
+
+> ![](img/julia.jpg)
+###[Name](http://juliajanicki.com) - 
+short paragraph here - tell us about you. 2 - 4 lines.
+I am a conservation biologist/ entomologist in training and have a background in studying languages, but I've always loved art and design, and I picked up programming and GIS/cartography on the side. Now one of my favorite things to do is to make interactive maps.  I also love animals (I have 2 bearded dragons) and I love rock climbing. As well as film photography and video editing.
+My GitHub Repo is: [repo name] (repo URL)
+<br>
+
 ## Teachers
 > ![](img/cs.jpg)
 ###[Colt Steele](http://iamcolt.com/) - [@CoolColtSteele](https://twitter.com/CoolColtSteele)
