@@ -21,7 +21,7 @@ His ultimate goal is to create robots that host dance parties for robots... why 
 
 
 > ![](img/willa_thumbnail.jpg)
-###[Willa Köerner](http:www.willakoerner.com) - [@tprete](https://twitter.com/willak)
+###[Willa Köerner](http:www.willakoerner.com) - [@willak](https://twitter.com/willak)
 Willa is an artist, writer, curator and freelance creative strategist working to bring art and technology together in meaningful ways.<br/>
 [Github Repo](https://github.com/willak)
 
