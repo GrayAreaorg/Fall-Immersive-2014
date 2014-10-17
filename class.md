@@ -54,6 +54,12 @@ Colt is a web developer and musician and dog lover and lego builder.
 
 <br>
 
+> ![](img/babyneal.png)
+###[Neal Riley](http://nealmakesnoise.com/) - [@nealriley](https://twitter.com/nealriley)
+Neal is a software developer, lecturer, and lover of music.  Currently he is working as an apprentice to Roger Linn, as well as guest lecturing on many audio & technology related topics.
+
+<br>
+
 ## Teaching Assistants
 > ![](img/ah.jpg)
 ###[Abla Hamilton](http://about.me/abla) - [@abla47](https://twitter.com/abla47)
