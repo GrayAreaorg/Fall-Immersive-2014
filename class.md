@@ -9,7 +9,7 @@
 Interaction Designer cum Spiritualist channeling tech poetry. I love Glutten, Sour beer and Artsian coffee.            No thats not Hipster Ipsum!
 Want to create Biomimicry with code.
 
-My GitHub Repo is: [repo name] (repo URL)
+My GitHub Repo is: [rakhiparekh] (https://github.com/rakhiparekh)
 <br>
 
 > ![](img/tyler_thumbnail.png)
