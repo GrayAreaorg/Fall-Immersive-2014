@@ -40,6 +40,13 @@ My GitHub Repo is: [jhjanicki] (repo URL)
 
 <br>
 
+> ![](img/willa_thumbnail.jpg)
+###[Willa Köerner](http:www.willakoerner.com) - [@willak](https://twitter.com/willak)
+Willa is an artist, writer, curator and freelance creative strategist working to bring art and technology together in meaningful ways.<br/>
+[Github Repo](https://github.com/willak)
+
+<br>
+
 ## Teachers
 > ![](img/cs.jpg)
 ###[Colt Steele](http://iamcolt.com/) - [@CoolColtSteele](https://twitter.com/CoolColtSteele)
