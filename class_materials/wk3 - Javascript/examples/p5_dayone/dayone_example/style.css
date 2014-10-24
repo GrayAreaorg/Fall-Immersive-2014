@@ -1,0 +1,13 @@
+body {
+  background : black;
+
+}
+
+
+#chickens {
+  border : rgb(0,255,0) 20px solid ;
+  float : left;
+  width : 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
