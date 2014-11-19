@@ -4,12 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Intro to D3.js: Live Coding</title>
-
-	    <link rel="stylesheet" href="stylesheets/bootstrap.css" type="text/css" />
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" type="text/css" />
 	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	    <script src="scripts/contrib/underscore.js"></script>
-	    <script src="scripts/contrib/d3.v3.js"></script>
+	    <script src="http://underscorejs.org/underscore-min.js"></script>
+	    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
 	    <style>
 
@@ -28,7 +26,9 @@
 		</svg>
 
 		<script>
-
+		d3.csv('bart-comp-all.csv', function(response) {
+			console.log(response);
+		});
 		</script>
 	</body>
 
