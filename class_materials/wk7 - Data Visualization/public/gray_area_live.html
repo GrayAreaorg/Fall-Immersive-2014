@@ -15,6 +15,7 @@
 	    		margin: 20px;
 	    		height: 500px;
 	    		display: block;
+	    		width: 100%;
 	    	}
 	    </style>
 	</head>
@@ -26,9 +27,29 @@
 		</svg>
 
 		<script>
-		d3.csv('bart-comp-all.csv', function(response) {
-			console.log(response);
-		});
+		// d3.csv('bart-comp-all.csv', function(response) {
+		// 	console.log(response);
+		// });
+
+		var rectData = [50, 134, 150, 170, 200];
+
+		// create bar chart
+		var svg = d3.select('svg');
+		
+		svg.selectAll('rect')
+			.data(rectData)
+			.enter().append('rect')
+				.attr('x', function(d, i) {
+					return i * 50;
+				})
+				.attr('y', function(d) {
+					return 500 - d * 2;
+				})
+				.attr('width', 10)
+				.attr('height', function(d) {
+					return d * 2;
+				})
+				.attr('fill', 'red');
 		</script>
 	</body>
 
