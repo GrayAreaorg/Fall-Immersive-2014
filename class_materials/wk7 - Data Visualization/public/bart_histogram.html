@@ -15,7 +15,7 @@
 	    		margin: 20px;
 	    		height: 500px;
 	    		display: block;
-	    		width: 100%;
+	    		width: 20000px;
 	    	}
 	    </style>
 	</head>
@@ -28,7 +28,38 @@
 
 		<script>
 		d3.csv('bart-comp-all.csv', function(response) {
-			console.log(response);
+			var employeeData = response;
+			var groupedByPosition = _.groupBy(employeeData, function(employee) {
+				return employee.Title;
+			});
+			groupedByPosition = _.values(groupedByPosition);
+
+			var svg = d3.select('svg');
+
+			var colorScale = d3.scale.category20();
+			console.log(groupedByPosition)
+			svg.selectAll('rect')
+				.data(groupedByPosition)
+				.enter().append('rect')
+					.attr('x', function(d, i) {
+						return i * 10;
+					}).attr('y', 0)
+					.attr('width', 10)
+					.attr('height', function(employees, i) {
+						var sum = 0;
+						var length = employees.length;
+
+						_.each(employees, function(employee) {
+							sum = sum + parseInt(employee.Base);
+						});
+						return sum / length / 1000;
+					}).attr('fill', function(employees) {
+						return colorScale(employees[0]["Union"]);
+					}).append('title')
+						.text(function(employees) {
+							return employees[0].Title;
+						});
+
 		});
 		</script>
 	</body>

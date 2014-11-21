@@ -39,8 +39,8 @@
 		svg.selectAll('rect')
 			.data(rectData)
 			.enter().append('rect')
-				.attr('x', function(d, i) {
-					return i * 50;
+				.attr('x', function(data, index) {
+					return index * 50;
 				})
 				.attr('y', function(d) {
 					return 500 - d * 2;
