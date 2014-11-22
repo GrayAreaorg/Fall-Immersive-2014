@@ -23,7 +23,9 @@ http://moebio.com/
 
 In class coding:  [bart histogram](https://github.com/GrayAreaorg/Fall-Immersive-2014/blob/master/class_materials/wk7%20-%20Data%20Visualization/public/bart_histogram.html) and [bart force](https://github.com/GrayAreaorg/Fall-Immersive-2014/blob/master/class_materials/wk7%20-%20Data%20Visualization/public/bart_force.html)
 
+###Day 3###
 
-**Resource links coming soon!**
+###Resources###
+*Coming soon!*
 
 
