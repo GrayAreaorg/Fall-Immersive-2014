@@ -29,15 +29,22 @@
 		<script>
 		d3.csv('bart-comp-all.csv', function(response) {
 			var employeeData = response;
+			// employeeData is an array of all employees' data
+			// so we want to first group employees by their position titles
+			// groupedByPosition is an object, with key being position title
+			// and value being an array of all employees with that title.
 			var groupedByPosition = _.groupBy(employeeData, function(employee) {
 				return employee.Title;
 			});
+			// because d3 expects the data it's passed to be an array,
+			// take all the values of groupedByPosition, which should
+			// give us an array of arrays.
 			groupedByPosition = _.values(groupedByPosition);
 
-			var svg = d3.select('svg');
-
+			// d3 has built-in scales for color
 			var colorScale = d3.scale.category20();
-			console.log(groupedByPosition)
+
+			var svg = d3.select('svg');
 			svg.selectAll('rect')
 				.data(groupedByPosition)
 				.enter().append('rect')
@@ -45,6 +52,10 @@
 						return i * 10;
 					}).attr('y', 0)
 					.attr('width', 10)
+					// height should be the average base salaries
+					// so find the sum of all employees with the particular
+					// title's base salary, and divide it by the number
+					// of employees with that title.
 					.attr('height', function(employees, i) {
 						var sum = 0;
 						var length = employees.length;
@@ -53,9 +64,17 @@
 							sum = sum + parseInt(employee.Base);
 						});
 						return sum / length / 1000;
-					}).attr('fill', function(employees) {
+					})
+					// color the rectangles with the employees'
+					// union affiliation
+					.attr('fill', function(employees) {
 						return colorScale(employees[0]["Union"]);
-					}).append('title')
+					})
+					// a title element in SVG is like the title attribute
+					// in html - it gives you a small tooltip on hover of
+					// an element.  the text of the tooltip should be the
+					// position title the rectangle represents.
+					.append('title')
 						.text(function(employees) {
 							return employees[0].Title;
 						});

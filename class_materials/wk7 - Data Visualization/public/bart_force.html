@@ -32,30 +32,93 @@
 			var groupedByPosition = _.groupBy(employeeData, function(employee) {
 				return employee.Title;
 			});
+			// after we've grouped employees by their position, loop through
+			// each position and calculate their average base salaries
+			// return an object with the average, radius of the circle
+			// and the raw array of employees data
 			groupedByPosition = _.map(groupedByPosition, function(employees) {
 				var length = employees.length;
+				// we are using the reduce function to sum the base salaries
+				// "memo" starts at 0, and represents the sum of all base
+				// salaries up until that point.
 				var sum = _.reduce(employees, function(memo, employee) {
 					return memo + parseInt(employee.Base);
 				}, 0)
 				return {
 					base: sum / length,
+					radius: sum / length / 10000,
 					employees: employees
 				}
 			});
+			// sort positions by their average base salary, with biggest
+			// number first (indicated by the negative sign before the return value)
+			groupedByPosition = _.sortBy(groupedByPosition, function(position) {
+				return -position.base;
+			});
+			// take the highest 50 positions and lowest 50 positions
+			// and put them together ("union") into the same array for
+			// our final dataset to pass to d3
+			groupedByPosition = _.union(_.first(groupedByPosition, 50), _.last(groupedByPosition, 50));
+
+
+			var colorScale = d3.scale.category20();
+			// declare the force layout, and tell it we want
+			// its size to be width 500, height 500 respectively
+			var force = d3.layout.force()
+				.size([500, 500])
+				// for the force layout to calculate each nodes' positions
+				// we need to pass our data (groupedByPosition) to it
+				.nodes(groupedByPosition);
 
 			var svg = d3.select('svg');
+			var circle = svg.selectAll('circle')
+				.data(groupedByPosition)
+				.enter().append('circle')
+					.attr('r', function(position) {
+						return position.radius;
+					})
+					.attr('fill', function(position) {
+						return colorScale(position.employees[0].Title);
+					}).call(force.drag())
+			// append title so we have the position titles on hover
+			// over of circle elements
+			circle.append('title')
+				.text(function(position) {
+					return position.employees[0].Title;
+				});
 
+			// tell force layout to start its simulations/calculations
+			force.start();
 
-
+			// the force layout calculates the positions by
+			// simulating the force between nodes and links at each "tick",
+			// or each iteration of the simulation.  it goes through
+			// thousands of "tick"s to arrive at as close to optimal
+			// position of each node as possible
 			force.on("tick", function(e) {
-			  var q = d3.geom.quadtree(nodes),
+				// this part can be ignored, it's the part of the code
+				// that makes sure the different sized circles
+				// don't overlap each other
+			  var q = d3.geom.quadtree(groupedByPosition),
 			      i = 0,
-			      n = nodes.length;
+			      n = groupedByPosition.length;
+			  while (++i < n) q.visit(collide(groupedByPosition[i]));
 
-			  while (++i < n) q.visit(collide(nodes[i]));
+			  // the reason why we specify cx and cy within the tick
+			  // function instead of up above is because we don't
+			  // have the x and y-values on the data
+			  // until the force layout starts the simulation
+			  // and we can access it at each tick
+			  circle.attr('cx', function(d) {
+				  	return d.x;
+				  }).attr('cy', function(d) {
+				  	return d.y;
+				  })
 
 			});
 
+			// can also be ignored, also part of code
+			// that makes sure the circles don't overlap each other.
 			function collide(node) {
 			  var r = node.radius + 16,
 			      nx1 = node.x - r,

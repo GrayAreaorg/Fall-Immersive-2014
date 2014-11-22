@@ -27,27 +27,38 @@
 		</svg>
 
 		<script>
-		// d3.csv('bart-comp-all.csv', function(response) {
-		// 	console.log(response);
-		// });
 
+		// come up with some data for our rectangles
 		var rectData = [50, 134, 150, 170, 200];
 
-		// create bar chart
+		// select the svg element
 		var svg = d3.select('svg');
 		
+		// select all rectangle elements in the svg element
+		// (that don't yet exist!) and give them the data
+		// with that data, tell d3 to enter and append
+		// the appropriate number of rectangle elements
 		svg.selectAll('rect')
 			.data(rectData)
 			.enter().append('rect')
+				.attr('width', 10)
+				// for each rectangle, i want its height
+				// to be twice the integer bound to it
+				// (so first rectangle is 50 * 2, second is 134 * 2, etc.)
+				.attr('height', function(d) {
+					return d * 2;
+				})
+				// each rectangle should be 50px away
+				// from the previous rectangle
 				.attr('x', function(data, index) {
 					return index * 50;
 				})
+				// because in svg, y increases going down
+				// and we want to give the chart 500px in height
+				// to make sure the rectangles are "right side up"
+				// we would subtract its height from 500
 				.attr('y', function(d) {
 					return 500 - d * 2;
-				})
-				.attr('width', 10)
-				.attr('height', function(d) {
-					return d * 2;
 				})
 				.attr('fill', 'red');
 		</script>
