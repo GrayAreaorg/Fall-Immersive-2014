@@ -27,11 +27,13 @@ Description of the artworks’ size, materials, construction methods, lighting, 
 ####Flow Charts & Material Lists
 * Hardware
 Example:
-![ ](img/hardware_example.jpg)
+
+![ ](img/hardware_example.png)
 
 * Software
 Example:
-![ ](img/software_example.jpg)
+
+![ ](img/software_example.png)
 
 ## Workplan
 | Start Date | End Date | Phase | Task | Category | Estimated Hrs | Resources Needed | Notes |
