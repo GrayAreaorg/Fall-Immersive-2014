@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" type="text/css" />
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://underscorejs.org/underscore-min.js"></script>
+	    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+	    <style>
+
+	    	svg {
+	    		margin: 20px;
+	    		height: 500px;
+	    		display: block;
+	    		width: 20000px;
+	    	}
+	    </style>
+	</head>
+
+	<body>
+
+		<svg>
+
+		</svg>
+
+		<script>
+		d3.json('tweets.json', function(response) {
+			// keep only objects in the array
+			// that have text and user information
+			var tweets = _.filter(response, function(tweet) {
+				return tweet.text && tweet.user;
+			});
+
+			tweets = _.map(tweets, function(tweet) {
+				var obj = {};
+				obj.text = tweet.text;
+				obj.date = new Date(tweet.created_at);
+				obj.user = {
+					name: tweet.user.name,
+					followers: tweet.user.followers_count,
+					image: tweet.user.profile_image_url
+				}
+
+				return obj;
+			});
+
+			// calculate minimum follower count
+			var minFollowers = _.min(tweets, function(tweet) {
+				return tweet.user.followers;
+			}).user.followers;
+			var maxFollowers = _.max(tweets, function(tweet) {
+				return tweet.user.followers;
+			}).user.followers;
+
+			var followerScale = d3.scale.log()
+				.domain([minFollowers, maxFollowers])
+				.range([24, 120]);
+
+			// group tweets by the minute
+			var timeInterval = d3.time.minute;
+			var tweetsByMinute = _.groupBy(tweets, function(tweet) {
+				return timeInterval(tweet.date);
+			});
+
+			console.log(tweetsByMinute);
+
+			// declare d3 force layout
+			var force = d3.layout.force()
+				.size([750, 500])
+				.nodes(tweets)
+				.charge(function(tweet) {
+					var size = followerScale(tweet.user.followers)
+					return -Math.pow(size, 2) / 20;
+				});
+
+			// select svg
+			var svg = d3.select('svg');
+			// create svg image elements with the users' profile images
+			var images = svg.selectAll('image')
+				.data(tweets)
+					.enter().append('image')
+					.attr('xlink:href', function(tweet) {
+						return tweet.user.image;
+					}).attr('width', function(tweet) {
+						return followerScale(tweet.user.followers);
+					})
+					.attr('height', function(tweet) {
+						return followerScale(tweet.user.followers);
+					})
+					.call(force.drag());
+			images.append('title')
+				.text(function(tweet) {
+					return tweet.user.name + '\n' + tweet.text;
+				});
+
+			// tell force layout to start
+			// its calculation simulations
+			force.start();
+
+			force.on('tick', function(e) {
+				images.attr('x', function(tweet) {
+					return tweet.x;
+				}).attr('y', function(tweet) {
+					return tweet.y;
+				})
+			})
+		})
+		</script>
+	</body>
+
+</html>
