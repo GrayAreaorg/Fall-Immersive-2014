@@ -13,7 +13,7 @@
 
 	    	svg {
 	    		margin: 20px;
-	    		height: 500px;
+	    		height: 10000px;
 	    		display: block;
 	    		width: 20000px;
 	    	}
@@ -37,6 +37,8 @@
 			tweets = _.map(tweets, function(tweet) {
 				var obj = {};
 				obj.text = tweet.text;
+				// turn string of tweet creation time and
+				// make it a javascript Date object
 				obj.date = new Date(tweet.created_at);
 				obj.user = {
 					name: tweet.user.name,
@@ -47,7 +49,7 @@
 				return obj;
 			});
 
-			// calculate minimum follower count
+			// calculate minimum and maximum follower count
 			var minFollowers = _.min(tweets, function(tweet) {
 				return tweet.user.followers;
 			}).user.followers;
@@ -59,21 +61,20 @@
 				.domain([minFollowers, maxFollowers])
 				.range([24, 120]);
 
-			// group tweets by the minute
-			var timeInterval = d3.time.minute;
-			var tweetsByMinute = _.groupBy(tweets, function(tweet) {
-				return timeInterval(tweet.date);
-			});
-
-			console.log(tweetsByMinute);
-
 			// declare d3 force layout
 			var force = d3.layout.force()
 				.size([750, 500])
-				.nodes(tweets)
 				.charge(function(tweet) {
 					var size = followerScale(tweet.user.followers)
 					return -Math.pow(size, 2) / 20;
+				}).on('tick', function(e) {
+					// on each tick of the force simulation
+					// update the x and y attribute of the images
+					images.attr('x', function(tweet) {
+						return tweet.x;
+					}).attr('y', function(tweet) {
+						return tweet.y;
+					})
 				});
 
 			// select svg
@@ -91,6 +92,7 @@
 						return followerScale(tweet.user.followers);
 					})
 					.call(force.drag());
+			// give a tooltip when user hovers over image
 			images.append('title')
 				.text(function(tweet) {
 					return tweet.user.name + '\n' + tweet.text;
@@ -98,15 +100,9 @@
 
 			// tell force layout to start
 			// its calculation simulations
+			// after passing in tweets data
+			force.nodes(tweets);
 			force.start();
-
-			force.on('tick', function(e) {
-				images.attr('x', function(tweet) {
-					return tweet.x;
-				}).attr('y', function(tweet) {
-					return tweet.y;
-				})
-			})
 		})
 		</script>
 	</body>
