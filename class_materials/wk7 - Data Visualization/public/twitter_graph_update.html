@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+	    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" type="text/css" />
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	    <script src="http://underscorejs.org/underscore-min.js"></script>
+	    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+	    <style>
+
+	    	svg {
+	    		margin: 20px;
+	    		height: 500px;
+	    		display: block;
+	    		width: 20000px;
+	    	}
+
+	    	.gray {
+	    		color: #ccc;
+	    	}
+
+	    </style>
+	</head>
+
+	<body>
+
+		<div class="time"></div>
+		<div class="prev">Previous</div>
+		<div class="next">Next</div>
+
+		<svg>
+
+		</svg>
+
+		<script>
+		d3.json('tweets.json', function(response) {
+			// keep only objects in the array
+			// that have text and user information
+			var tweets = _.filter(response, function(tweet) {
+				return tweet.text && tweet.user;
+			});
+
+			tweets = _.map(tweets, function(tweet) {
+				var obj = {};
+				obj.text = tweet.text;
+				obj.date = new Date(tweet.created_at);
+				obj.user = {
+					name: tweet.user.name,
+					followers: tweet.user.followers_count,
+					image: tweet.user.profile_image_url
+				}
+
+				return obj;
+			});
+
+			// calculate minimum follower count
+			var minFollowers = _.min(tweets, function(tweet) {
+				return tweet.user.followers;
+			}).user.followers;
+			var maxFollowers = _.max(tweets, function(tweet) {
+				return tweet.user.followers;
+			}).user.followers;
+
+			var followerScale = d3.scale.log()
+				.domain([minFollowers, maxFollowers])
+				.range([24, 120]);
+
+			// group tweets by the minute
+			var timeInterval = d3.time.minute;
+			var tweetsByMinute = _.chain(tweets)
+				.groupBy(function(tweet) {
+					return timeInterval(tweet.date);
+				}).sortBy(function(tweetsAtMinute) {
+					return timeInterval(tweetsAtMinute[0].date);
+				}).value();
+
+			// declare d3 force layout
+			var force = d3.layout.force()
+				.size([750, 500])
+				.charge(function(tweet) {
+					var size = followerScale(tweet.user.followers)
+					return -Math.pow(size, 2) / 20;
+				}).on('tick', function(e) {
+					// on each tick of the force simulation
+					// update the x and y attribute of the images
+					images.attr('x', function(tweet) {
+						return tweet.x;
+					}).attr('y', function(tweet) {
+						return tweet.y;
+					});
+				});;
+
+			// select svg
+			var svg = d3.select('svg');
+			var images = svg.selectAll('image');
+
+			var minuteIndex = 0;
+			updateNodes();
+			updateTime();
+
+			$('.prev').click(function() {
+				updateTime(false, true);
+				updateNodes();
+			});		
+			$('.next').click(function() {
+				updateTime(true, false);
+				updateNodes();
+			});
+
+			function updateNodes() {
+				// create svg image elements with the users' profile images
+				images = svg.selectAll('image')
+					.data(tweetsByMinute[minuteIndex]);
+
+				images.enter().append('image')
+					.append('title');
+				images.exit().remove();
+
+				images.attr('xlink:href', function(tweet) {
+							return tweet.user.image;
+						}).attr('width', function(tweet) {
+							return followerScale(tweet.user.followers);
+						})
+						.attr('height', function(tweet) {
+							return followerScale(tweet.user.followers);
+						})
+						.call(force.drag());
+				
+				images.select('title').text(function(tweet) {
+						return tweet.user.name + '\n' + tweet.text;
+					});
+
+				// tell force layout to start
+				// its calculation simulations
+				force.nodes(tweetsByMinute[minuteIndex]);
+				force.start();
+			}
+
+			function updateTime(next, prev) {
+				if (next && minuteIndex < tweetsByMinute.length - 1) {
+					minuteIndex += 1;
+				} else if (prev && minuteIndex > 0) {
+					minuteIndex -= 1;
+				}
+
+				if (minuteIndex === 0) {
+					$('.prev').addClass('gray');
+				} else if (minuteIndex === tweetsByMinute.length - 1) {
+					$('.next').addClass('gray');
+				} else {
+					$('.prev, .next').removeClass('gray');
+				}
+
+				$('.time').text(tweetsByMinute[minuteIndex][0].date);
+			}			
+		})
+		</script>
+	</body>
+
+</html>
