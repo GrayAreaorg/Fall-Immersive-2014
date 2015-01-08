@@ -14,7 +14,7 @@
 
 	    	svg {
 	    		margin: 20px;
-	    		height: 500px;
+	    		height: 2000px;
 	    		display: block;
 	    		width: 20000px;
 	    	}
@@ -43,7 +43,7 @@
 
 		var rawTweets = [];
 
-		var tweetsByMinute;
+		var tweetsByMinute = [[]];
 		var minuteIndex = 0;
 
 		// select svg and select image elements
@@ -51,7 +51,7 @@
 		var images = svg.selectAll('image');
 
 		var timeInterval = d3.time.minute;
-		var followerScale = d3.scale.log().range([24, 120]);
+		var followerScale = d3.scale.linear().range([24, 120]);
 		// declare d3 force layout
 		var force = d3.layout.force()
 			.size([750, 500])
@@ -116,6 +116,7 @@
 			});
 			tweets = _.map(tweets, function(tweet) {
 				var obj = {};
+				obj.id = tweet.id;
 				obj.text = tweet.text;
 				obj.date = new Date(tweet.created_at);
 				obj.user = {
@@ -123,6 +124,7 @@
 					followers: tweet.user.followers_count,
 					image: tweet.user.profile_image_url
 				}
+				persistPosition(obj, tweet.id);
 
 				return obj;
 			});
@@ -147,14 +149,11 @@
 			});
 
 			// calculate minimum follower count
-			var minFollowers = _.min(tweets, function(tweet) {
-				return tweet.user.followers;
-			}).user.followers;
 			var maxFollowers = _.max(tweets, function(tweet) {
 				return tweet.user.followers;
 			}).user.followers;
 
-			followerScale.domain([minFollowers, maxFollowers]);
+			followerScale.domain([0, maxFollowers]);
 
 			// default to latest minute
 			minuteIndex = tweetsByMinute.length - 1;
@@ -217,7 +216,17 @@
 			}
 
 			// show which minute we're at
-			$('.time').text(tweetsByMinute[minuteIndex][0].date);
+			$('.time').text(tweetsByMinute[minuteIndex][0] && tweetsByMinute[minuteIndex][0].date);
+		}
+
+		function persistPosition(obj, tweetId) {
+			var tweet = _.chain(tweetsByMinute)
+				.flatten().find(function(tweet) {
+					return tweet.id === tweetId;
+				}).value();
+
+			obj.x = tweet && tweet.x;
+			obj.y = tweet && tweet.y;
 		}
 		</script>
 	</body>
