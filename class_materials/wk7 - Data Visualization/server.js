@@ -1,4 +1,4 @@
-var Stream = require('user-stream');
+var Twit = require('twit');
 var express = require('express');
 var socketio = require('socket.io');
 
@@ -7,12 +7,12 @@ express_app.use(express.static(__dirname + '/public'));
 var express_server = express_app.listen(8000);
 var io = socketio.listen(express_server);
 
-var stream = new Stream({
+var T = new Twit({
   // fill with keys 
 });
-stream.stream();
+stream = T.stream('statuses/filter', { track: 'javascript' });
 
-stream.on('data', function(json) {
+stream.on('tweet', function(json) {
     console.log('data', json);
     io.emit('data', json);
 });
