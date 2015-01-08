@@ -1,0 +1,8 @@
+{
+  "name": "wk7-dataviz",
+  "dependencies": {
+    "twit": "*",
+    "express": "*",
+    "socket.io": "*"
+  }
+}
