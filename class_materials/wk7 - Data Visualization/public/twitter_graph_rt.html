@@ -101,6 +101,11 @@
 		});
 		$('.reset').click(function() {
 			delete localStorage.tweets;
+
+			rawTweets = [];
+			tweetsByMinute = [[]];
+			minuteIndex = 0;
+			updateNodes();
 		});
 
 		function calculateData() {
